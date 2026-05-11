@@ -40,8 +40,11 @@ type_mapping = {"PAYMENT": 0, "TRANSFER": 1, "CASH_OUT": 2, "DEBIT": 3}
 type_encoded = type_mapping[type_transaction]
 
 if st.button("Predict Fraud"):
+    if amount > oldbalanceOrg:
+        st.error("Invalid transaction: insufficient balance")
+    else:
     # Create input dictionary
-    new_input = {
+        new_input = {
         "step": step,
         "type": type_encoded,
         "amount": amount,
