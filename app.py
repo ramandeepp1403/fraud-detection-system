@@ -11,7 +11,7 @@ model = joblib.load("fraud_model.pkl")
 
 # sidebar
 st.sidebar.title("About")
-st.sidebar.info("Machine Learning based Fraud Detection System using Random Forest.")
+st.sidebar.info("Machine Learning based Fraud Detection System")
 
 # main title
 st.title("💳 Fraud Detection System")
