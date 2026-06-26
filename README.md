@@ -1,7 +1,6 @@
 # 💳 Fraud Detection System
 💳 End-to-end Credit Card Fraud Detection using Machine Learning with EDA, feature engineering, model evaluation, and fraud prediction. This project demonstrates end-to-end ML workflow — from data analysis to model deployment.
 ## 🌐 Live Demo: https://fraud-detection-system-ruv4vgswqyo2mkpmqeah5c.streamlit.app/#fraud-detection-system.  
-This project demonstrates end-to-end ML workflow — from data analysis to model deployment.
 
 ## 🚀 Project Overview
 
