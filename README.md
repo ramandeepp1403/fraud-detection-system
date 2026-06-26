@@ -1,126 +1,271 @@
-# 💳 Fraud Detection System
-💳 End-to-end Credit Card Fraud Detection using Machine Learning with EDA, feature engineering, model evaluation, and fraud prediction. This project demonstrates end-to-end ML workflow — from data analysis to model deployment.
-## 🌐 Live Demo: https://fraud-detection-system-ruv4vgswqyo2mkpmqeah5c.streamlit.app/#fraud-detection-system.  
+# 💳 Credit Card Fraud Detection System
 
-## 🚀 Project Overview
+An end-to-end **Machine Learning** project for detecting fraudulent financial transactions using **Exploratory Data Analysis (EDA), feature engineering, class imbalance handling (SMOTE), model evaluation, threshold tuning, and an interactive Streamlit dashboard**.
 
-Financial fraud is rare but highly impactful. With only ~0.13% of transactions being fraudulent, this is a classic imbalanced classification problem that breaks naive models.
+## 🌐 Live Demo
 
-This project demonstrates a complete end-to-end ML workflow:
+**Try the deployed application here:**
 
--  Raw data ingestion and cleaning
--  Exploratory Data Analysis on 6M+ transactions
--  Class imbalance handling using SMOTE
--  Training and comparing multiple ML models
--  Threshold tuning for real-world precision-recall tradeoff
--  Deployment via Streamlit web app
--  Cloud pipeline reproduction on Azure ML Designer
+👉 https://fraud-detection-system-ruv4vgswqyo2mkpmqeah5c.streamlit.app/
 
 ---
 
-## 📂 Dataset
+# 📌 Project Overview
 
-| Property | Details |
-| Source | PaySim — Kaggle |
-| Size | 6.3M+ transactions |
-| Features | 7 (step, type, amount, balances) |
-| Fraud Rate | ~0.13% (highly imbalanced) |
-| Fraud Types | TRANSFER, CASH_OUT |
+Credit card fraud is one of the biggest challenges faced by financial institutions. Since fraudulent transactions represent only a tiny fraction of all transactions, detecting them accurately while minimizing false alarms is a challenging machine learning problem.
 
----
+This project builds a complete fraud detection pipeline—from data preprocessing and exploratory analysis to model training, evaluation, deployment, and cloud implementation.
 
-## Key Features
-
--  Deep EDA — transaction types, amount distributions, fraud patterns
--  SMOTE oversampling to handle extreme class imbalance
--  Benchmarked 3 models — Logistic Regression, Random Forest, XGBoost
--  Threshold tuning across 0.3 → 0.9 to optimize precision-recall
--  Live Streamlit app with real-time fraud prediction
--  3-tier risk scoring system (Legitimate / Suspicious / Fraudulent)
--  Prediction history tracking with visual distribution chart
--  Full pipeline reproduced on Azure ML Designer
+The final solution enables users to enter transaction details and instantly receive a fraud prediction with an associated risk level.
 
 ---
 
-## 🧪 Model Performance
+# 🎯 Objectives
 
-**Final Model: Random Forest @ threshold 0.9**
-
-| Metric | Score |
-| Precision (Fraud) | 0.816 |
-| Recall (Fraud) | 0.834 |
-| F1-Score | 0.825 |
-| ROC-AUC | 0.9985 |
-| Accuracy | 99.95% |
-
-### Threshold Tuning Results
-
-| Threshold | Precision | Recall | F1 |
-|---|---|---|---|
-| 0.3 | 0.04 | 0.99 | 0.07 |
-| 0.5 | 0.08 | 0.98 | 0.15 |
-| 0.7 | 0.18 | 0.96 | 0.31 |
-| **0.9** | **0.82** | **0.83** | **0.83** ✅ |
-
- 💡 **Key Insight:** Accuracy is misleading here — predicting "no fraud" always gives 99.87%. Threshold selection is a business decision, not just a technical one.
-
-## 🎯 3-Tier Risk Scoring (Streamlit App)
-
-| Probability | Risk Level | Action |
-| < 0.50 | ✅ Legitimate | Allow |
-| 0.50 – 0.75 | ⚠️ Suspicious | Flag for review |
-| > 0.75 | 🚨 Fraudulent | Block |
+* Analyze transaction patterns through Exploratory Data Analysis (EDA)
+* Handle extreme class imbalance using SMOTE
+* Train and compare multiple machine learning models
+* Optimize prediction threshold for real-world performance
+* Deploy the final model using Streamlit
+* Reproduce the workflow using Microsoft Azure ML Designer
 
 ---
 
-## ☁️ Azure ML Pipeline
+# 📂 Dataset
 
-Reproduced the complete pipeline on **Microsoft Azure ML Designer** to validate enterprise scalability.
+**Dataset:** PaySim Mobile Money Transactions (Kaggle)
 
-**Pipeline Steps:**
+### Dataset Summary
+
+* 📄 Over **6.3 million** transaction records
+* 📈 Highly imbalanced dataset (~0.13% fraudulent transactions)
+* 💳 Mobile money transaction simulation
+* 🚨 Fraud primarily occurs in **TRANSFER** and **CASH_OUT** transaction types
+
+### Dataset Features
+
+| Feature        | Description                                   |
+| -------------- | --------------------------------------------- |
+| step           | Time step representing the hour of simulation |
+| type           | Transaction type                              |
+| amount         | Transaction amount                            |
+| oldbalanceOrg  | Sender balance before transaction             |
+| newbalanceOrig | Sender balance after transaction              |
+| oldbalanceDest | Receiver balance before transaction           |
+| newbalanceDest | Receiver balance after transaction            |
+| isFraud        | Fraud label (Target Variable)                 |
+
+---
+
+# 🛠️ Tech Stack
+
+* Python
+* Pandas
+* NumPy
+* Matplotlib
+* Seaborn
+* Scikit-learn
+* XGBoost
+* Imbalanced-learn (SMOTE)
+* Streamlit
+* Microsoft Azure ML Designer
+* Jupyter Notebook
+
+---
+
+# 🔬 Machine Learning Workflow
+
+* Data Cleaning
+* Exploratory Data Analysis (EDA)
+* Feature Engineering
+* Handling Class Imbalance using SMOTE
+* Model Training
+* Model Evaluation
+* Threshold Optimization
+* Streamlit Deployment
+* Azure ML Pipeline Implementation
+
+---
+
+# 🤖 Models Evaluated
+
+* Logistic Regression
+* Random Forest
+* XGBoost
+
+The Random Forest classifier delivered the best balance between precision and recall after threshold tuning.
+
+---
+
+# 📊 Model Performance
+
+### Final Model: Random Forest (Threshold = 0.90)
+
+| Metric    | Score  |
+| --------- | ------ |
+| Accuracy  | 99.95% |
+| Precision | 0.816  |
+| Recall    | 0.834  |
+| F1 Score  | 0.825  |
+| ROC-AUC   | 0.9985 |
+
+---
+
+# ⚖️ Threshold Tuning Results
+
+| Threshold | Precision |   Recall |   F1 Score |
+| --------- | --------: | -------: | ---------: |
+| 0.30      |      0.04 |     0.99 |       0.07 |
+| 0.50      |      0.08 |     0.98 |       0.15 |
+| 0.70      |      0.18 |     0.96 |       0.31 |
+| **0.90**  |  **0.82** | **0.83** | **0.83** ✅ |
+
+### Key Insight
+
+Instead of relying solely on accuracy, threshold tuning significantly improved fraud detection performance by balancing precision and recall, making the model more practical for real-world financial applications.
+
+---
+
+# 🚨 Fraud Risk Classification
+
+The deployed application categorizes predictions into three risk levels:
+
+| Fraud Probability | Risk Level    | Recommended Action  |
+| ----------------: | ------------- | ------------------- |
+|            < 0.50 | ✅ Legitimate  | Approve Transaction |
+|       0.50 – 0.75 | ⚠️ Suspicious | Manual Review       |
+|            > 0.75 | 🚨 Fraudulent | Block Transaction   |
+
+---
+
+# ☁️ Azure ML Implementation
+
+The machine learning pipeline was also recreated using **Microsoft Azure ML Designer** to demonstrate how the workflow can be implemented in a cloud-based enterprise environment.
+
+Pipeline:
+
+```text
+Data Input
+      ↓
+Data Cleaning
+      ↓
+Train/Test Split
+      ↓
+SMOTE
+      ↓
+Train Model
+      ↓
+Score Model
+      ↓
+Evaluate Model
 ```
-Data Input → Clean Missing Data → Split Data → SMOTE → Train Model → Score Model → Evaluate Model
-```
 
-| Metric | Azure ML Result |
-| AUC | 0.916 |
-| Accuracy | 0.998 |
+Azure Evaluation Metrics
+
+| Metric   | Score |
+| -------- | ----: |
+| Accuracy | 99.8% |
+| AUC      | 0.916 |
 
 ---
 
-## ⚙️ Tech Stack
+# 📈 Exploratory Data Analysis
 
-| Category | Tools |
-|---|---|
-| Language | Python |
-| Data Processing | Pandas, NumPy |
-| Machine Learning | Scikit-learn, XGBoost |
-| Imbalance Handling | Imbalanced-learn (SMOTE) |
-| Visualization | Matplotlib, Seaborn |
-| Deployment | Streamlit |
-| Cloud ML | Azure ML Designer |
+The project includes comprehensive visual analysis, including:
+
+* Fraud vs Legitimate Transactions
+* Transaction Type Distribution
+* Transaction Amount Distribution
+* Correlation Heatmap
+* Fraud Distribution by Transaction Type
+* Balance Change Analysis
+* Feature Relationships
+
+---
+
+# 📸 Project Preview
+<img width="1907" height="998" alt="Screenshot 2026-06-27 004100" src="https://github.com/user-attachments/assets/18c46fda-8cdc-4db0-a087-f0c2b93a1137" />
+<img width="862" height="679" alt="Screenshot 2026-06-27 004158" src="https://github.com/user-attachments/assets/13e50488-8ef5-401d-a9c8-a6081b03e0ef" />
+<img width="804" height="532" alt="Screenshot 2026-06-27 004223" src="https://github.com/user-attachments/assets/3a5e78fb-44a6-4c65-befb-af83f9372906" />
+<img width="539" height="693" alt="Screenshot 2026-06-27 004247" src="https://github.com/user-attachments/assets/061320d1-770f-427a-8c14-53ab5567cc91" />
 
 
-## 📁 Project Structure
+---
+
+# 📁 Project Structure
+
+```text
 fraud-detection-system/
 │
-├── app.py                  # Streamlit web application
-├── fraud_model.pkl         # Trained Random Forest model
-├── paysimfraud.ipynb       # Complete ML notebook
-├── requirements.txt        # Python dependencies
-└── README.md               # Project documentation
+├── app.py
+├── paysimfraud.ipynb
+├── fraud_model.pkl
+├── scaler.pkl
+├── requirements.txt
+├── README.md
+└── images/
 ```
-
-## 💡 Key Learnings
-
-- In imbalanced datasets, **accuracy is not a reliable metric**
-- **SMOTE** effectively balances training data without losing information
-- **Threshold tuning** is as important as model selection in production
-- A **3-tier risk system** is more practical than a single binary threshold
-- The same ML pipeline can be reproduced at **enterprise cloud scale** using Azure ML
 
 ---
 
-## 👨‍💻 Developed By
+# ▶️ Getting Started
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/ramandeepp1403/fraud-detection-system.git
+```
+
+### Navigate to the Project
+
+```bash
+cd fraud-detection-system
+```
+
+### Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Run the Streamlit App
+
+```bash
+streamlit run app.py
+```
+
+---
+
+# 💡 Key Learnings
+
+* Handling highly imbalanced datasets using SMOTE
+* Importance of precision and recall in fraud detection
+* Threshold tuning for production-ready machine learning models
+* Building interactive ML applications with Streamlit
+* Deploying machine learning workflows on Azure ML Designer
+* End-to-end model development and deployment
+
+---
+
+# 🚀 Future Improvements
+
+* Real-time API integration
+* Explainable AI using SHAP
+* Model monitoring dashboard
+* Cloud deployment using Docker and Azure
+* Automated model retraining pipeline
+
+---
+
+# 👨‍💻 Developed By
 
 **Ramandeep Singh**
+
+* GitHub: https://github.com/ramandeepp1403
+* LinkedIn: https://www.linkedin.com/in/ramandeep-pandi/
+
+---
+
+# ⭐ Support
+
+If you found this project useful, consider giving the repository a **⭐ Star**.
