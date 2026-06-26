@@ -1,10 +1,9 @@
 A machine learning-based fraud detection system that identifies suspicious financial transactions in real-time.
 This project demonstrates end-to-end ML workflow — from data analysis to model deployment.
 # 💳 Fraud Detection System
-## 🌐 Live Demo: https://fraud-detection-system-ruv4vgswqyo2mkpmqeah5c.streamlit.app/#fraud-detection-system
-
-A machine learning-based fraud detection system that identifies suspicious financial transactions in real-time.  
+## 🌐 Live Demo: https://fraud-detection-system-ruv4vgswqyo2mkpmqeah5c.streamlit.app/#fraud-detection-system.  
 This project demonstrates end-to-end ML workflow — from data analysis to model deployment.
+
 ## 🚀 Project Overview
 
 Financial fraud is rare but highly impactful. With only ~0.13% of transactions being fraudulent, this is a classic imbalanced classification problem that breaks naive models.
